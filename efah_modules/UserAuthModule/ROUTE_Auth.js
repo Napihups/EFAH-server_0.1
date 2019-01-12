@@ -22,12 +22,22 @@ router.post('/signup', (req, res) => {
 })
 
 /**
- * Router full endpoint : /auth/authentication
+ * Router full endpoint : /auth/signin
  * @PostBody {username, password}
  */
-router.post('/authentication', (req, res) => {
-    let credentials = req.body
-    services.doLoginUser(credentials, (token) => {res.json({success: true, payload: token});})
+router.post('/signin', (req, res) => {
+    let credentials = req.body;
+    services.doSigninUser(credentials, (token) => {res.json({success: true, payload: token});})
+})
+
+
+/**
+* Router full endpoint : /auth/signout
+ * @PostBody {token}
+ */
+router.get('/signout', (req, res) => {
+    let token = req.body;
+    services.doSignoutUser(token, (done) => {res.json({success: true, paload : done})});
 })
 
 /** Expose modules --------------------*/

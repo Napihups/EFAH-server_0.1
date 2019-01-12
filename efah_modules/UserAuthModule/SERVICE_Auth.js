@@ -44,7 +44,7 @@ function doSignupUser(user, callback) {
  * @param {*} credential 
  * @param {*} callback 
  */
-function doLoginUser(credential, callback) {
+function doSigninUser(credential, callback) {
     authenticateUser(credential)
     .then(token => {
         callback(token);
@@ -143,6 +143,11 @@ function authenticateUser(credential) {
 }
 
 
+function unsignedToken(token) {
+    JWT.unsignedToken(token);
+}
+
+
 function matchPassword(givenPass, dbPass) {
     if(givenPass === dbPass){
         return true;
@@ -155,4 +160,4 @@ function matchPassword(givenPass, dbPass) {
 
 /**expose modules ---------------- */
 exports.doSignupUser = doSignupUser;
-exports.doLoginUser = doLoginUser;
+exports.doSigninUser = doSigninUser;
