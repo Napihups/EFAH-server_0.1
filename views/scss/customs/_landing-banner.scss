@@ -1,0 +1,39 @@
+// CLASSES ------------//
+.keke4t{
+    height: 20px;
+}
+
+
+.uygh{
+    padding-bottom: 5px !important;
+}
+
+.uygh:hover {
+    background: $primary;
+
+    .thf{
+        color:white !important;
+    }
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+
+@media screen and (min-width: 600px) {
+    .tythr{
+        text-align: center;
+        margin-top: 50px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .tythr{
+        text-align: center;
+        margin-top: 100px;
+    }
+}
+
+.dfe{
+    color:$primary;
+    opacity: 0.5;
+}

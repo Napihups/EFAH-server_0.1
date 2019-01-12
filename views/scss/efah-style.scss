@@ -1,0 +1,35 @@
+// import Shards 2.1.0
+@import "shards";
+@import "customs/c-navbar";
+@import "customs/landing-banner";
+
+//commons classess
+
+.nav-content-wrap{
+    max-width: $page-container;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.btn-padding{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+.body-content-wrap {
+    max-width: $page-container;
+    margin-left: auto;
+    margin-right: auto;
+    // background: pink;
+    width: 100%;
+}
+
+.ta-center{
+    text-align: center;
+}
+
+
+
+
