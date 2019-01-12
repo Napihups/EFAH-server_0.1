@@ -37,7 +37,7 @@ router.post('/signin', (req, res) => {
  */
 router.get('/signout', (req, res) => {
     let token = req.body;
-    services.doSignoutUser(token, (done) => {res.json({success: true, paload : done})});
+    services.doSignoutUser(token, (done) => {res.json({success: true, payload : done})});
 })
 
 /** Expose modules --------------------*/
