@@ -51,6 +51,8 @@ CREATE TABLE T_01_EFAH_USER_TYPE (
 );
 
 
+
+/** Testing scripts*/
 SELECT * FROM T_01_EFAH_USER_TYPE;
 
 select * from T_01_EFAH_USER;
