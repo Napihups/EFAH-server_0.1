@@ -1,5 +1,6 @@
 /* To create the DATABASES with ENV (use only once upon deployment)*/
 CREATE DATABASE EFAH_DEV_01;
+CREATE DATABASE EFAH_LDAP_01;
 
 /* make sure to use this first before exec any sql */
 use EFAH_DEV_01;
@@ -52,7 +53,18 @@ CREATE TABLE T_01_EFAH_USER_TYPE (
 
 
 
-/** Testing scripts*/
+
+
+/** testing scripts ---------------------------------------------*/
+
+
+
+
+
+
+
+
+
 SELECT * FROM T_01_EFAH_USER_TYPE;
 
 select * from T_01_EFAH_USER;

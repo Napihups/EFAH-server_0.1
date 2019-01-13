@@ -5,11 +5,10 @@ const bodyParser = require('body-parser');
 // const passportSetup = require('./configs/passport-setup');
 const cors = require('cors');
 // const cookieSession = require('cookie-session');
-// const properties = require('./configs/properties');
+const properties = require('./configs/properties');
 // const passport = require('passport');
 
 /**Import & INIT EFAH-MOUDLES */
-// const DB = require('./efah_modules/mysql');
 
 // routes import ----------------------------------
 const authRoutes = require('./routes/api/auth-routes');
@@ -30,8 +29,9 @@ app.use(bodyParser.json());
 //     keys : [properties.session.cookieKey]
 // }));
 
-//setup passport
+// //setup passport
 // app.use(passport.initialize());
+// require('./efah_modules/commons/passport')(passport);
 // app.use(passport.session());
 
 

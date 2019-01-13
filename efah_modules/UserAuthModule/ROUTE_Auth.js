@@ -27,7 +27,9 @@ router.post('/signup', (req, res) => {
  */
 router.post('/signin', (req, res) => {
     let credentials = req.body;
-    services.doSigninUser(credentials, (token) => {res.json({success: true, payload: token});})
+    services.doSigninUser(credentials, (token) => {
+        res.json({success: true, payload: token});
+    })
 })
 
 
@@ -36,9 +38,17 @@ router.post('/signin', (req, res) => {
  * @PostBody {token}
  */
 router.get('/signout', (req, res) => {
-    let token = req.body;
-    services.doSignoutUser(token, (done) => {res.json({success: true, payload : done})});
+    let token = req.user;
+    console.log(req.user);
+    // services.doSignoutUser(token, (done) => {res.json({success: true, payload : done})});
 })
+
+router.get('/test', services.validateAuthentication , (req, res) => {
+    
+    res.json({success: true, payload: res.user} )
+} )
+
+
 
 /** Expose modules --------------------*/
 module.exports = router;

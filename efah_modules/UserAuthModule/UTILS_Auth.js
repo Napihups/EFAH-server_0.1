@@ -8,7 +8,7 @@
 
 
  /** Required modules */
- const COMMANDS = require('../commons/commands');
+const COMMANDS = require('../commons/commands');
 
 
  /**
@@ -16,7 +16,7 @@
   * of the user type 
   * @param {} userType 
   */
- function generateNewUniqueId(userType) {
+function generateNewUniqueId(userType) {
 
     let a = Math.floor(Math.random() * 9) + 0
     let b = Math.floor(Math.random() * 9) + 0
@@ -34,7 +34,7 @@
 
     var ID = prefix + a + b + c + d + e + f
     return ID;
- }
+}
 
 
 

@@ -89,6 +89,17 @@ INSERT INTO EFAH_DEV_01.T_01_EFAH_AUTH (USER_ID, USERNAME, PASSWORD)
 VALUES (?, ?, ?)
 `
 
+/**
+ * Desc : Inserting the token signed into the LDAP DB (for session tracking)
+ */
+const INSERT_TOKEN_LDAP =
+`
+INSERT INTO EFAH_LDAP_01.T_01_TOKEN_STAT (TOKEN, SIGN_STATE, TOKEN_SIGN_DT, TOKEN_SIGN_T, TOKEN_UNSIGN_DT, TOKEN_UNSIGN_T)
+VALUES (?, 1, CURRENT_DATE(), CURTIME(), NULL, NULL)
+`;
+
+
+
 
 
 
@@ -154,11 +165,10 @@ function insertNewUser(user) {
                     }
                     resolve(sqlResult[0]);
                 })
-            } )
+            })
         })
     })
 }
-
 
 
 function searchAuthByUsername(username) {
@@ -176,10 +186,11 @@ function getUserById(uid) {
     return new Promise((resolve, reject) => {
         executeQuery(GET_USER_BY_ID, [uid], (err, sqlResult) => {
             if(err) reject(err);
-            resolve(sqlResult);
+            resolve(sqlResult[0]);
         })
     })
 }
+
 
 
 

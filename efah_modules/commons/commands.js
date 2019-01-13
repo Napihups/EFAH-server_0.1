@@ -25,7 +25,19 @@ const COMMANDS = {
     /** */
     STUDENT_TYPE_ID : 1,
     /** */
-    TEACHER_TYPE_ID : 2
+    TEACHER_TYPE_ID : 2,
+    /** */
+    TOKEN_SIGNING : 'TOKEN_SIGNING',
+    /** */
+    TOKEN_UNSIGNING : 'TOKEN_SIGNING',
+
+    /** LDAP related commands  */
+
+    LDAP_TOKEN_BASED_KEY : 'LDAP_TOKEN_STAT:',
+    LDAP_BLACKLIST_KEY : 'BLACKLIST:',
+    LDAP_TOKEN_FIELD : 'TOKEN',
+    LDAP_DTS_FIELD : 'DTS',
+    LDAP_SET_SUCCESS : 'OK'
 }
 
 
