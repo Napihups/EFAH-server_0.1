@@ -24,6 +24,7 @@ router.post('/signup', (req, res) => {
 /**
  * Router full endpoint : /auth/signin
  * @PostBody {username, password}
+ * @Return {success, token}
  */
 router.post('/signin', (req, res) => {
     let credentials = req.body;
@@ -36,6 +37,7 @@ router.post('/signin', (req, res) => {
 /**
 * Router full endpoint : /auth/signout
  * @PostBody {token}
+ * @Return {success, r} 
  */
 router.get('/signout', (req, res) => {
     let token = req.body.jwt_token;
