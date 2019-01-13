@@ -11,12 +11,12 @@ const properties = require('./configs/properties');
 /**Import & INIT EFAH-MOUDLES */
 
 // routes import ----------------------------------
-const authRoutes = require('./routes/api/auth-routes');
-const userRoutes = require('./routes/api/user-routes');
+// const authRoutes = require('./routes/api/auth-routes');
+// const userRoutes = require('./routes/api/user-routes');
 const ROUTE_AUTH = require('./efah_modules/UserAuthModule/ROUTE_Auth');
 //-------------------------------------------------
 
-const mongoUrl = "mongodb://localhost:27017/efah";
+// const mongoUrl = "mongodb://localhost:27017/efah";
 
 //Body parser Middleware
 app.use(bodyParser.json());
@@ -54,9 +54,9 @@ app.use(cors({
 
 
 // Routes setup ------------------------------//
-app.use('/auth', authRoutes);
-app.use('/user', userRoutes);
-app.use('/ROUTE-USER', ROUTE_AUTH);
+// app.use('/auth', authRoutes);
+// app.use('/user', userRoutes);
+app.use('/auth', ROUTE_AUTH);
 
 const port = process.env.port || 5000;
 
