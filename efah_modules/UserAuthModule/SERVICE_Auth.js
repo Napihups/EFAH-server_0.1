@@ -47,16 +47,17 @@ function doSignupUser(user, callback) {
 function doSigninUser(credential, callback) {
     authenticateUser(credential)
     .then(token => {
-        callback(token);
+        callback({success: true, payload : token});
     })
     .catch(err => {
         switch(err) {
-            case COMMANDS.PASSWORD_MATCH_FAILURE : console.log( COMMANDS.PASSWORD_MATCH_FAILURE); break;
-            case COMMANDS.TOKEN_SIGN_FAILED : console.log(COMMANDS.TOKEN_SIGN_FAILED);break;
+            case COMMANDS.PASSWORD_MATCH_FAILURE : callback({success: false, payload : COMMANDS.PASSWORD_MATCH_FAILURE}); break;
+            case COMMANDS.TOKEN_SIGN_FAILED : callback({success: false, payload : COMMANDS.PASSWORD_MATCH_FAILURE}) ;break;
             default : console.log("Unknown error "); break;
         }
     })
 }
+
 
 /**
  * 
@@ -149,11 +150,13 @@ function processingUserRegistration(user) {
  * @param {*} credential 
  */
 function authenticateUser(credential) {
+    console.log(credential, 'AAA');
     return new Promise((resolve, reject) => {
         authDAO.searchAuthByUsername(credential.username)
         .then(result => {
             if(result.length === 0){
                 //no username found
+                reject(COMMANDS.USERNAME_INVALID);
             }else if(result.length === 1) {
 
                 // if username found 

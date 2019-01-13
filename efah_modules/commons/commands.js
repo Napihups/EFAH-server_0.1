@@ -13,6 +13,8 @@ const COMMANDS = {
     /** */
     TOKEN_SIGN_FAILED : 'Failed to sign token from user',
     /** */
+    USERNAME_INVALID : 'Username not found',
+    /** */
     PASSWORD_MATCH_FAILURE : "Password is invalid",
     /** */
     USER_TYPE_STUDENT : 'STUDENT',

@@ -27,9 +27,13 @@ router.post('/signup', (req, res) => {
  * @Return {success, token}
  */
 router.post('/signin', (req, res) => {
-    let credentials = req.body;
-    services.doSigninUser(credentials, (token) => {
-        res.json({success: true, payload: token});
+    let credentials = req.body.data;
+    services.doSigninUser(credentials, (result) => {
+        if(result.success){
+            res.json({success: true, payload : result.payload});
+        }else {
+            res.json({success: false,payload : result.payload });
+        }
     })
 })
 
