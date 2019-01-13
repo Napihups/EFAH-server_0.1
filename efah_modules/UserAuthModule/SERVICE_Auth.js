@@ -224,6 +224,10 @@ function doCheckTokenValidLDAP(token) {
 }
 
 
+/**
+ * 
+ * @param {*} token 
+ */
 function updateTokentoBlacklistLDAP(token) {
 
     return new Promise((resolve, reject) => {
