@@ -38,9 +38,14 @@ router.post('/signin', (req, res) => {
  * @PostBody {token}
  */
 router.get('/signout', (req, res) => {
-    let token = req.user;
-    console.log(req.user);
-    // services.doSignoutUser(token, (done) => {res.json({success: true, payload : done})});
+    let token = req.body.jwt_token;
+    services.doSignoutUser(token, (r) => {
+        if(r){
+            console.log("Log out user : " + r)
+            res.json({success: true, payload : r});
+        }
+        res.json({success: false, payload: "User not successfully log out "})
+    })
 })
 
 router.get('/test', services.validateAuthentication , (req, res) => {

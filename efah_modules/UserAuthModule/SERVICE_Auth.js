@@ -58,6 +58,21 @@ function doSigninUser(credential, callback) {
     })
 }
 
+/**
+ * 
+ * @param {*} tid 
+ */
+function doSignoutUser(token, callback) {
+
+    updateTokentoBlacklistLDAP(token)
+    .then(() => {
+        callback(true);
+    })
+    .catch(err => {
+        callback(false);
+    })
+
+}
 
 /**
  * 
@@ -72,6 +87,9 @@ function validateAuthentication(req, res, next) {
        if(user) {
            res.user = user;
            next();
+       } else {
+            res.json({success: false, payload : "Token is invalid"});
+            next('err', null);
        }
     })
     .catch(err => {
@@ -190,6 +208,7 @@ function doCheckTokenValidLDAP(token) {
             let user = obj.user;
             LDAP.checkTokenValid(tid)
             .then(r => {
+                console.log(r, 'AFIFAH');
                 if(r) {
                     resolve(user);
                 }else {
@@ -205,8 +224,28 @@ function doCheckTokenValidLDAP(token) {
 }
 
 
+function updateTokentoBlacklistLDAP(token) {
+
+    return new Promise((resolve, reject) => {
+        JWT.verify(token, appProps.JWT.secret, (err, obj) => {
+            if(err) reject(err);
+            let tid = obj.tid;
+            LDAP.updateToken(token, tid)
+            .then(() => {
+                resolve();
+            })
+            .catch(err => {
+                reject(err);
+            })
+        })
+    })
+
+}
+
+
 
 /**expose modules ---------------- */
 exports.doSignupUser = doSignupUser;
 exports.doSigninUser = doSigninUser;
 exports.validateAuthentication = validateAuthentication;
+exports.doSignoutUser = doSignoutUser;
