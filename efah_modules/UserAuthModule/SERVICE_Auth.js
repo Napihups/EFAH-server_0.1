@@ -150,7 +150,6 @@ function processingUserRegistration(user) {
  * @param {*} credential 
  */
 function authenticateUser(credential) {
-    console.log(credential, 'AAA');
     return new Promise((resolve, reject) => {
         authDAO.searchAuthByUsername(credential.username)
         .then(result => {
