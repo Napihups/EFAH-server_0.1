@@ -30,8 +30,8 @@ LDAP.on('connect', (err) => {
 function updateTokenToLDAP (token, tid) {
    return new Promise((resolve, reject) => {
         insertTokenData(token, tid)
-        .then((r) => {
-            resolve("[LDAP] Successfully update token : " + r);
+        .then(() => {
+            resolve();
         })
         .catch(err => reject(err));
    })
@@ -84,8 +84,6 @@ function getTokenHash (tid) {
 /** expose modules */
 exports.updateToken = updateTokenToLDAP;
 exports.checkTokenValid = checkTokenValid;
-
-
 
 
 
