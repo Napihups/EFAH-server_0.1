@@ -70,6 +70,7 @@ function doSignoutUser(token, callback) {
         callback(true);
     })
     .catch(err => {
+        console.log(err, '[doSignoutUser()]' )
         callback(false);
     })
 
@@ -83,6 +84,9 @@ function doSignoutUser(token, callback) {
  */
 function validateAuthentication(req, res, next) {
     let token = req.body.jwt_token;
+    if(token === undefined) {
+        token = req.headers.authorization   
+    }
     doCheckTokenValidLDAP(token)
     .then(user => {
        if(user) {
@@ -94,7 +98,7 @@ function validateAuthentication(req, res, next) {
        }
     })
     .catch(err => {
-        console.log(err);
+        console.log(err, '[validateAuthentication()]');
         res.json({success: false, payload : err});
         next('err', null);  
     })
@@ -210,7 +214,6 @@ function doCheckTokenValidLDAP(token) {
             let user = obj.user;
             LDAP.checkTokenValid(tid)
             .then(r => {
-                console.log(r, 'AFIFAH');
                 if(r) {
                     resolve(user);
                 }else {
@@ -245,9 +248,7 @@ function updateTokentoBlacklistLDAP(token) {
             })
         })
     })
-
 }
-
 
 
 /**expose modules ---------------- */

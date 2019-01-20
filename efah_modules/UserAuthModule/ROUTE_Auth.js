@@ -27,7 +27,7 @@ router.post('/signup', (req, res) => {
  * @Return {success, token}
  */
 router.post('/signin', (req, res) => {
-    let credentials = req.body.data;
+    let credentials = req.body.rPayload;
     services.doSigninUser(credentials, (result) => {
         if(result.success){
             res.json({success: true, payload : result.payload});
@@ -41,14 +41,12 @@ router.post('/signin', (req, res) => {
 /**
 * Router full endpoint : /auth/signout
  * @PostBody {token}
- * @Return {success, r} 
+ * @Return {success, result} 
  */
-router.get('/signout', (req, res) => {
-    let token = req.body.jwt_token;
-    services.doSignoutUser(token, (r) => {
-        if(r){
-            res.json({success: true, payload : r});
-        }
+router.post('/signout', (req, res) => {
+    let token = req.body.data;
+    services.doSignoutUser(token, (result) => {
+        result ?  res.json({success: true, payload : result}) : 
         res.json({success: false, payload: "User not successfully log out "})
     })
 })

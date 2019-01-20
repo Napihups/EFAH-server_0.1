@@ -14,6 +14,7 @@ const properties = require('./configs/properties');
 // const authRoutes = require('./routes/api/auth-routes');
 // const userRoutes = require('./routes/api/user-routes');
 const ROUTE_AUTH = require('./efah_modules/UserAuthModule/ROUTE_Auth');
+const userRoute = require('./efah_modules/UserModule/User.route');
 //-------------------------------------------------
 
 // const mongoUrl = "mongodb://localhost:27017/efah";
@@ -57,6 +58,7 @@ app.use(cors({
 // app.use('/auth', authRoutes);
 // app.use('/user', userRoutes);
 app.use('/auth', ROUTE_AUTH);
+app.use('/user', userRoute );
 
 const port = process.env.port || 5000;
 
