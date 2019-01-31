@@ -10,7 +10,6 @@ const express = require('express');
 const router = express.Router();
 const services = require('../UserAuthModule/SERVICE_Auth');
 
-
 /**
  * To get basic user account infomation 
  * @Body {not applicable}
