@@ -149,7 +149,7 @@ function insertNewUser(user) {
     }
     
     return new Promise((resolve, reject) => {
-        executeQuery(INSERT_USER, [uid, fullname, email, mobile_num, typeId], (err) => {
+        executeQuery(INSERT_USER, [uid, fullname, email, mobile_num, typeId], (erssr) => {
             if(err){
                 reject(err);
             }
